@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cars.model
 {
-    enum Type
+    enum CarType
     {
         Sportscar,
         Casual

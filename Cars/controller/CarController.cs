@@ -8,32 +8,32 @@ namespace Cars.controller
 {
     class CarController
     {
-        List<Car> carList = new List<Car>();
+        public List<Car> carList = new List<Car>();
         public void gatherCarData()
         {
-            Console.WriteLine("Welcome to our Car-Generator!\nPlease select your car-type:\n1: Casual\n2: Sports");
-            int carType = Int32.Parse(Console.ReadLine());
-            model.Type? type = null;
-            switch (carType)
+            Console.WriteLine("Please select your car-type:\n1: Casual\n2: Sports");
+            int type = Int32.Parse(Console.ReadLine());
+            CarType? carType = null;
+            switch (type)
             {
                 case 1:
-                    type = model.Type.Casual; break;
+                    carType = CarType.Casual; break;
                 case 2:
-                    type = model.Type.Sportscar; break;
+                    carType = CarType.Sportscar; break;
             }
             Console.WriteLine("Please select a category:\n1: Sedan\n2: Coupe\n3: SUV\n4: Mini-Van");
-            int carCategory = Int32.Parse(Console.ReadLine());
-            Category? category = null;
-            switch (carCategory)
+            int category = Int32.Parse(Console.ReadLine());
+            Category? carCategory = null;
+            switch (category)
             {
                 case 1:
-                    category = Category.Sedan; break;
+                    carCategory = Category.Sedan; break;
                 case 2:
-                    category = Category.Coupe; break;
+                    carCategory = Category.Coupe; break;
                 case 3:
-                    category = Category.SUV; break;
+                    carCategory = Category.SUV; break;
                 case 4:
-                    category = Category.MiniVan; break;
+                    carCategory = Category.MiniVan; break;
             }
             Console.WriteLine("Brand:");
             string brand = Console.ReadLine();
@@ -43,7 +43,15 @@ namespace Cars.controller
             int year = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Color:");
             string color = Console.ReadLine();
-            carList.Add(new Car((model.Type)type, (Category)category, brand, name, year, color));
+            switch ((CarType)carType)
+            {
+                case CarType.Casual:
+                    carList.Add(new CasualCar((CarType)carType, (Category)carCategory, brand, name, year, color)); break;
+                case CarType.Sportscar:
+                    Console.WriteLine("test");
+                    carList.Add(new SportsCar((CarType)carType, (Category)carCategory, brand, name, year, color)); break;
+                    
+            }
         }
     }
 }

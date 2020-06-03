@@ -6,14 +6,9 @@ namespace Cars.model
 {
     class SportsCar : Car
     {
-        public SportsCar(Type type, Category category, string brand, string name, int year, string color)
+        public SportsCar(CarType type, Category category, string brand, string name, int year, string color)
+            : base(type, category, brand, name, year, color)
         {
-            this.Type = type;
-            this.Category = category;
-            this.Brand = brand;
-            this.Name = name;
-            this.Year = year;
-            this.Color = color;
         }
     }
 }
